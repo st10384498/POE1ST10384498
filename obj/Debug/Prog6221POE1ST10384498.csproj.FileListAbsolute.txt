@@ -1,0 +1,7 @@
+C:\Users\Siviwe\source\repos\POE1ST10384498\bin\Debug\POE1ST10384498.exe.config
+C:\Users\Siviwe\source\repos\POE1ST10384498\bin\Debug\POE1ST10384498.exe
+C:\Users\Siviwe\source\repos\POE1ST10384498\bin\Debug\POE1ST10384498.pdb
+C:\Users\Siviwe\source\repos\POE1ST10384498\obj\Debug\Prog6221POE1ST10384498.csproj.AssemblyReference.cache
+C:\Users\Siviwe\source\repos\POE1ST10384498\obj\Debug\Prog6221POE1ST10384498.csproj.CoreCompileInputs.cache
+C:\Users\Siviwe\source\repos\POE1ST10384498\obj\Debug\POE1ST10384498.exe
+C:\Users\Siviwe\source\repos\POE1ST10384498\obj\Debug\POE1ST10384498.pdb
