@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace POE1ST10384498
+namespace Prog6221POE1ST10384498_
 {
-    internal class ResetQuantities
+     class ResetQuantities
     {
+
+        public void ChanageQuantities()
+        {
+
+
+        } 
     }
 }
