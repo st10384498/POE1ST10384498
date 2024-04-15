@@ -9,7 +9,6 @@ namespace FindRecipe_
 {
      class FindRecipe
     {
-
         public static void SearchRecipe(Recipe[] recipes, string searchName)
         {
             bool found = false;

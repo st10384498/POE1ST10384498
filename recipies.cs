@@ -14,7 +14,7 @@ namespace Recipies
 
         public string NameRecipe { get; set; }
         //Store the ingredients and steps in arrays. 
-        public string []NameIngredients { get; set; }
+        public string[] NameIngredients { get; set; }
         public string[] QuantityIngredients { get; set; }
         public string[] UnitOfMeasurement { get; set; }
         public int NumberOfSteps { get; set; }
@@ -26,8 +26,7 @@ namespace Recipies
             NameIngredients = new string[NumIngredients];
             QuantityIngredients = new string[NumIngredients];
             UnitOfMeasurement = new string[NumIngredients];
-            //DescriptionIngredients = new string[NumIngredients];
-            //NumberOfSteps = new int[NumIngredients];
+           
         }
 
         public static Recipe[] RecipeInfo()
@@ -45,15 +44,15 @@ namespace Recipies
             //loop the according to number of recipies
             for (int i = 0; i < numrecipes; i++)
             {
-               
-                Console.WriteLine($"Please enter the name of your { i  + 1} recipe :");
+
+                Console.WriteLine($"Please enter the name of your {i + 1} recipe :");
                 string recipeName = Console.ReadLine();
-                
-                Console.WriteLine("How many ingredients will "+recipeName+" require? ");
-                int NumIngredients =Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("How many ingredients will " + recipeName + " require? ");
+                int NumIngredients = Convert.ToInt32(Console.ReadLine());
                 //class obj to 
                 Recipe recipe = new Recipe(NumIngredients);
-               //set NameRecp
+                //set NameRecp
                 recipe.NameRecipe = recipeName;
 
                 //loop according to numbers of ingredients
@@ -68,9 +67,9 @@ namespace Recipies
                     Console.WriteLine("What is the unit Of Measurement (e.g.1 kg of rice)\n");
                     recipe.UnitOfMeasurement[j] = Console.ReadLine();
                 }
-               
+
                 Console.WriteLine("How many steps are ivloved in this recipe\n");
-                 recipe.NumberOfSteps = Convert.ToInt32(Console.ReadLine());
+                recipe.NumberOfSteps = Convert.ToInt32(Console.ReadLine());
 
                 Console.WriteLine("Give a brief discription on how to make this delicious recipethis recipe\n");
                 recipe.DescriptionIngredients = Console.ReadLine();
@@ -81,22 +80,23 @@ namespace Recipies
             }
             return recipes;
         }
-        //private background method to catch if a user inputs word(chars) instead of ints
-        private static int CatchUserInput ()
-        {
-            //try catch 
-            while (true)
-            {
-                try
-                {
-                    return Convert.ToInt32(Console.ReadLine());
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Please enter a number .");
-                }
-            }
-        }
     }
 }
+        //private background method to catch if a user inputs word(chars) instead of ints
+    //    private static int CatchUserInput ()
+    //    {
+    //        //try catch 
+    //        while (true)
+    //        {
+    //            try
+    //            {
+    //                return Convert.ToInt32(Console.ReadLine());
+    //            }
+    //            catch (FormatException)
+    //            {
+    //                Console.WriteLine("Please enter a number .");
+    //            }
+    //        }
+    //    }
+    //}
 
