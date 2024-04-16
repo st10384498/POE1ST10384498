@@ -16,7 +16,7 @@ namespace Recipes
         public string NameRecipe { get; set; }
         //Store the ingredients and steps in arrays. 
         public string[] NameIngredients { get; set; }
-        public string[] QuantityIngredients { get; set; }
+        public double[] QuantityIngredients { get; set; }
         public string[] UnitOfMeasurement { get; set; }
         public int NumberOfSteps { get; set; }
         public string DescriptionIngredients { get; set; }
@@ -26,7 +26,7 @@ namespace Recipes
         public Recipe(int numIngredients)
         {
             NameIngredients = new string[numIngredients];
-            QuantityIngredients = new string[numIngredients];
+            QuantityIngredients = new double[numIngredients];
             UnitOfMeasurement = new string[numIngredients];
         }
         // create obj of the class to assign(set) \
@@ -81,9 +81,9 @@ namespace Recipes
 
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"Enter the quantity of ingredient (e.g. 5 |cloves of garlic|) {recipe.NameIngredients[j]}:"+"\nHint only enter integer value");
+                    Console.WriteLine($"Enter the quantity of ingredient (e.g. 5 |cloves of garlic|) {recipe.NameIngredients[j]}."+"\nHint only enter integer value :");
                     Console.ResetColor();
-                    recipe.QuantityIngredients[j] = Console.ReadLine();
+                    recipe.QuantityIngredients[j] = Convert.ToDouble(Console.ReadLine());
                    
 
 
@@ -121,7 +121,10 @@ namespace Recipes
         //accessed 09/04/24
         public void DisplayRecipe()
         {
+
             Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("======================================== Display Recipe ==========================================================");
+            Console.Write("");
             Console.WriteLine($"Recipe Name: {NameRecipe}");
             Console.WriteLine("Ingredients:");
             for (int i = 0; i < NameIngredients.Length; i++)
@@ -130,11 +133,32 @@ namespace Recipes
             }
             Console.WriteLine($"Number of Steps: {NumberOfSteps}");
             Console.WriteLine($"Description: {DescriptionIngredients}");
+            Console.Write("");
+            Console.WriteLine("===================================================================================================================");
             Console.ResetColor();
+            Console.Write("");
         }
-       
+        public void ScaleRecipe(double factor)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            if (factor <= 0)
+            {
+                Console.WriteLine("Factor must be greater than zero.");
+                return;
+            }
+
+            for (int i = 0; i < QuantityIngredients.Length; i++)
+            {
+                QuantityIngredients[i] *= factor;
+            }
+
+            Console.WriteLine($"Recipe scaled by a factor of {factor}.");
+            Console.ResetColor();
+            Console.Write("");
+        }
     }
 }
+
 
 //}
 //        //private background method to catch if a user inputs word(chars) instead of ints

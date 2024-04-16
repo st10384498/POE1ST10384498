@@ -9,8 +9,6 @@ namespace RecipeManager
 {
      class RecipeManager_
     {
-
-       
             public static void DeleteRecipe(Recipe[] recipes, int index)
         {
 
@@ -24,7 +22,7 @@ namespace RecipeManager
                     Console.WriteLine("Please enter a valid index for the recipe you want to be deleted.\nHint : Recipe 1 = index 0 , Recipe 2 = index1");
                     return;
                 }
-
+            //cofirm user choice
                 Console.WriteLine($"Are you sure you want to delete the recipe '{recipes[index].NameRecipe}'? (yes/no)");
                 string confirmation = Console.ReadLine().ToLower();
 
