@@ -4,3 +4,5 @@
 I have 3 class in total namely Recipe ,RecipeManager and the main method class program.
 the main is essentially my menu navigation class where i've called all the methods.
 the user selects from the menu how they want to proceed through the food book by adding ,searching ...a recipe. the user will then be prompeted by the backgroung method recipe info .I put the display aswell as the scale recipe methods in the class Recipe for simplicity and code orginisation . RecipeManager class is a class that has the delete and search methods .These both work by sinding the requested recipe via the cosole using the name or index of a recipe. all these are separated by color coding for code readablity and for user satisfaction and ease.  
+POE Part 1 :ST10384498
+https://github.com/st10384498/POE1ST10384498.git
