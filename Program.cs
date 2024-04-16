@@ -4,8 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Prog6221POE1ST10384498_;
-using RecipeManager_;
+using RecipeManager;
 using Recipes;
 //using FindRecipe_;
 
@@ -31,30 +30,9 @@ namespace Prog6221POE1ST10384498
             Console.WriteLine("Select from the menue below to direct your experience!");
             Console.Write("");
             Console.ResetColor();
-            //Console.WriteLine("\n1. Add recipe\n2. Reset quantities \n3. SearchRecipe  \n4. Display recipie/s \n5. Clear recipie data");
-            //int option = Convert.ToInt32(Console.ReadLine());
-
-            //Class obj for recipe
-            // Recipe recipe = new Recipe();
-            // make objs for the classes 
-
-            //this code was adapted from stackoverflow :
-            // https://stackoverflow.com/questions/35905141/initializing-an-array-public-static-int
-
-            //    case 2:
-            //        // code block
-            //        ResetQuantities resetQuantities = new ResetQuantities();
-            //        resetQuantities.ChanageQuantities();
-            //          break;
 
             while (true)
             {
-                //"Menu:"
-                Console.WriteLine("1. Create Recipes");
-                Console.WriteLine("2. Display recipe");
-                Console.WriteLine("3. Search Recipe");
-                Console.WriteLine("4. Delete Recipe");
-                Console.WriteLine("6. Exit");
 
                 //Console.WriteLine("Enter your choice:");
                 //int choice = Convert.ToInt32(Console.ReadLine());
@@ -63,105 +41,106 @@ namespace Prog6221POE1ST10384498
                 //https://www.codecademy.com/resources/docs/c-sharp/switch
                 //Published Mar 15, 2023•Updated Oct 12, 2023 Accessed on 9/12/2024
 
-                //switch (choice)
-                //        {
-                //            case 1:
-                //        // code block
-                //        //call class objz
-                //        Recipe[] recipes = Recipe.CreateRecipes();
-                //        Console.Write("");
-                //        recipes[0].DisplayRecipe();
-                //        break;
-                //            case 2:
-                //        //recipe.DisplayRecipe();
-                //        //        break;
-                //        case 3:
-                //        //    //code block
-                //        //Console.WriteLine("Enter the name of the recipe you want to search:");
-                //        //string searchName = Console.ReadLine();
-                //        ////call class obj
 
-                //            RecipeManager.DeleteRecipe(recipes[], 0);
-                //        break;
-                //    case 6:
-                //        // code block
-                //        Console.WriteLine("Exiting...");
-                //                return;
-                //            default:
-                //                Console.WriteLine("Invalid choice. Please enter a valid option.");
-                //                break;
-                //        }
-                //    }
+                Recipe[] recipes = null;
 
-                
-                        Recipe[] recipes = null;
+                while (true)
+                {
 
-                        while (true)
-                        {
-                            Console.WriteLine("Choose an action:");
-                            Console.WriteLine("1. Create Recipes");
-                            Console.WriteLine("2. Display Recipe");
-                            Console.WriteLine("3. Delete Recipe");
-                            Console.WriteLine("4. Exit");
+                    //"Menu:"
+                    Console.WriteLine("Choose an action:");
+                    Console.WriteLine("1. Create Recipes");
+                    Console.WriteLine("2. Display Recipe");
+                    Console.WriteLine("3. Delete Recipe");
+                    Console.WriteLine("4. Search Recipe");
+                    Console.WriteLine("5. Exit");
 
-                            int choice;
-                            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 4)
-                            {
-                                Console.WriteLine("Please enter a number between 1 and 4.");
-                            }
-
-                            switch (choice)
-                            {
-                                case 1:
-                                    recipes = Recipe.CreateRecipes();
-                                    break;
-                                case 2:
-                                    if (recipes == null)
-                                    {
-                                        Console.WriteLine("No recipes available. Please create recipes first.");
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Enter the index of the recipe you want to display:");
-                                        int index;
-                                        while (!int.TryParse(Console.ReadLine(), out index) || index < 0 || index >= recipes.Length)
-                                        {
-                                            Console.WriteLine($"Invalid index. Please enter a number between 0 and {recipes.Length - 1}.");
-                                        }
-                                        recipes[index].DisplayRecipe();
-                                    }
-                                    break;
-                                case 3:
-                                    if (recipes == null)
-                                    {
-                                        Console.WriteLine("No recipes available. Please create recipes first.");
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Enter the index of the recipe you want to delete:");
-                                        int indexToDelete;
-                                        while (!int.TryParse(Console.ReadLine(), out indexToDelete) || indexToDelete < 0 || indexToDelete >= recipes.Length)
-                                        {
-                                            Console.WriteLine($"Invalid index. Please enter a number between 0 and {recipes.Length - 1}.");
-                                        }
-                                        RecipeManager.DeleteRecipe(recipes, indexToDelete);
-                                    }
-                                    break;
-                                case 4:
-                                    Console.WriteLine("Exiting...");
-                                    return;
-                            }
-                        }
+                    int choice;
+                    //this code was adapted from reddit: how to get valid input from console
+                    //https://www.reddit.com/r/csharp/comments/oix441/im_trying_to_make_a_while_loop_that_keeps_running/
+                    //acessed on 16/2024
+                    while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 5)
+                    {
+                        Console.WriteLine("Please select between option number 1 and 4.");
                     }
 
+                    switch (choice)
+                    {
+                        case 1:
+                            // code block
+                            recipes = Recipe.CreateRecipes();
+                            break;
+                        case 2:
 
-                    Console.ReadLine();
-
-                    //Console writeline("\n1 Create recipe, display full recipie , scale recipe ,alter recipe ,clear data end program)
-                    //int userOption =ConertTo
-                    //int enters =
+                            // code block
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            if (recipes == null)
+                            {
+                                Console.WriteLine("No recipes available. Please create recipes first.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Enter the index of the recipe you want to display:");
+                                int index;
+                                while (!int.TryParse(Console.ReadLine(), out index) || index < 0 || index >= recipes.Length)
+                                {
+                                    Console.WriteLine($"Invalid index. Please enter a number between 0 and {recipes.Length - 1}.");
+                                }
+                                recipes[index].DisplayRecipe();
+                            }
+                            Console.ResetColor();
+                            break;
+                        case 3:
+                            // code block
+                            if (recipes == null)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("No recipes available. Please create recipes first.");
+                                Console.ResetColor();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Enter the index of the recipe you want to delete:");
+                                int indexToDelete;
+                                while (!int.TryParse(Console.ReadLine(), out indexToDelete) || indexToDelete < 0 || indexToDelete >= recipes.Length)
+                                {
+                                    Console.WriteLine($"Invalid index. Please enter a number between 0 and {recipes.Length - 1}.\nHint : Recipe 1 = index 0 , Recipe 2 = index1");
+                                }
+                                RecipeManager_.DeleteRecipe(recipes, indexToDelete);
+                            }
+                            break;
+                        case 4:
+                            if (recipes == null)
+                            {
+                                Console.WriteLine("No recipes available. Please create recipes first.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Enter the name of the recipe you want to search:");
+                                string recipeName = Console.ReadLine();
+                                int recipeIndex = RecipeManager_.SearchRecipeIndex(recipes, recipeName);
+                                if (recipeIndex != -1)
+                                {
+                                    Console.WriteLine($"Recipe '{recipeName}' found at index {recipeIndex}.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Recipe '{recipeName}' not found.");
+                                }
+                            }
+                            break;
+                        case 5:
+                            Console.WriteLine("Exiting...");
+                            return;
+                    }
                 }
 
+
+                Console.ReadLine();
+
+
             }
+
         }
- 
+    }
+}

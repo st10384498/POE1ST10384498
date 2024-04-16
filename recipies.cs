@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,8 @@ namespace Recipes
         public int NumberOfSteps { get; set; }
         public string DescriptionIngredients { get; set; }
 
+        //constructor to initialise the array size
+        //these will increase based on the number of ingredients
         public Recipe(int numIngredients)
         {
             NameIngredients = new string[numIngredients];
@@ -28,14 +31,18 @@ namespace Recipes
         }
         // create obj of the class to assign(set) \
         //have an array that will have a loop To allow users to add more than one recipe
-        
 
+        //this code was adapted from stackoverflow :
+        // https://stackoverflow.com/questions/35905141/initializing-an-array-public-static-int
+
+        public static Recipe[] CreateRecipes()
         //array method was adapted from Stackoverflow
         //https://stackoverflow.com/questions/7712137/array-containing-methods
         //accessed on 09/04/2024
-        public static Recipe[] CreateRecipes()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("How many recipes would you like to create?");
+            Console.ResetColor();
             int numRecipes = Convert.ToInt32(Console.ReadLine());
             // this code was adapted (readline read an integer) from stack overflow
             //https://stackoverflow.com/questions/24443827/reading-an-integer-from-user-input
@@ -46,36 +53,64 @@ namespace Recipes
             {
                 //this code was adapted from tutorialsteacher
                 //https://www.tutorialsteacher.com/csharp/csharp-for-loop
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"Please enter the name of your {i + 1} recipe:");
+                Console.ResetColor();
                 string recipeName = Console.ReadLine();
+               
 
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"How many ingredients will {recipeName} require?");
+                Console.ResetColor();
                 int numIngredients = Convert.ToInt32(Console.ReadLine());
+               
 
+                //recipe class obj
                 Recipe recipe = new Recipe(numIngredients);
+                //make input = to array(save to array)
                 recipe.NameRecipe = recipeName;
 
+                //loop according to numbers of ingredients
                 for (int j = 0; j < numIngredients; j++)
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"Enter the ingredient for recipe {j + 1}:");
+                    Console.ResetColor();    
                     recipe.NameIngredients[j] = Console.ReadLine();
+                    
 
-                    Console.WriteLine($"Enter the quantity of ingredient {recipe.NameIngredients[j]}:");
+
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"Enter the quantity of ingredient (e.g. 5 |cloves of garlic|) {recipe.NameIngredients[j]}:"+"\nHint only enter integer value");
+                    Console.ResetColor();
                     recipe.QuantityIngredients[j] = Console.ReadLine();
+                   
 
-                    Console.WriteLine($"Enter the unit of measurement for ingredient {recipe.NameIngredients[j]}:");
+
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"Enter the unit of measurement for ingredient(e.g.1 kg ) {recipe.NameIngredients[j]}:");
+                    Console.ResetColor();
                     recipe.UnitOfMeasurement[j] = Console.ReadLine();
+                   
                 }
 
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"How many steps are involved in {recipe.NameRecipe}?");
+                Console.ResetColor();
                 recipe.NumberOfSteps = Convert.ToInt32(Console.ReadLine());
+                
 
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"Give a brief description of how to make {recipe.NameRecipe}:");
+                Console.ResetColor();
                 recipe.DescriptionIngredients = Console.ReadLine();
+                
                 Console.Write("");
                 recipes[i] = recipe;
+                recipes[i].DisplayRecipe();
+                Console.Write("");
             }
-
+           
             return recipes;
          
         }
@@ -100,101 +135,6 @@ namespace Recipes
        
     }
 }
-
-//namespace Recipies
-//{
-//    class Recipe
-//    {
-
-//        public string[] NameRecipe { get; set; }
-
-//        public string[] NameIngredients { get; set; }
-//        public double [] QuantityIngredients { get; set; }
-//        public string[] UnitOfMeasurement { get; set; }
-//        public int []NumberOfSteps { get; set; }
-//        public string[] DescriptionIngredients { get; set; }
-//        //big array
-//        public string[] Ingredient { get; set; }
-
-//        //method to initialize for Recipie class to save ingredients to an array the size of num ingredients
-//        public void InitializeArray (int NumIngredients)
-//        {
-//            NameIngredients = new string[NumIngredients];
-//            QuantityIngredients = new double [NumIngredients];
-//            NameRecipe = new string[NumIngredients];
-//            UnitOfMeasurement = new string[NumIngredients];
-//            DescriptionIngredients = new string[NumIngredients];
-//            NumberOfSteps =new int[NumIngredients];
-//           Ingredient = new string[NumIngredients];
-//        }
-
-//        public void RecipeInfo()
-//        {
-
-//            Console.WriteLine("How many recipes would you like to create \n");
-//            int numrecipes = Convert.ToInt32(Console.ReadLine());
-//            //array that takes from the consolen the array size
-//            String[] recipes = new String[numrecipes];
-//            string temp = "";
-//            //loop the according to number of recipies
-
-//            for (int i = 0; i < numrecipes; i++)
-//            {
-//                
-//                Console.WriteLine($"Please enter the name of your {i + 1} recipe :");
-//                NameRecipe[i] = Console.ReadLine();
-
-//                Console.WriteLine("How many ingredients will this recipe require? ");
-//                int numIngredients = Convert.ToInt32(Console.ReadLine());
-
-//                //loop according to numbers of ingredients
-//                for (int j = 0; j < numIngredients; j++)
-//                {
-//                    Console.WriteLine($"Enter the Ingredients for recipe {j + 1} ");
-//                    NameIngredients[j] = Console.ReadLine();
-
-//                    Console.WriteLine("Enter the quantity ingredients (e.g. 5 cloves of garlic \n");
-//                    QuantityIngredients[j] = Convert.ToDouble(Console.ReadLine());
-
-//                    Console.WriteLine("What is the unit Of Measurement (e.g.1 kg of rice)\n");
-//                   UnitOfMeasurement[j] = Console.ReadLine();
-
-//                    temp += $"{QuantityIngredients[j]} {UnitOfMeasurement[j]} of name ingridients {j}";
-//                }
-//                //store everthing into big array
-//                Ingredient[i] = temp;
-//                Console.WriteLine("How many steps are ivloved in this recipe\n");
-//                NumberOfSteps[i]= Convert.ToInt32(Console.ReadLine());
-
-//                Console.WriteLine("Give a brief discription on how to make this delicious recipe\n");
-//                DescriptionIngredients[i] = Console.ReadLine();
-
-//                recipes[i] = $"Recipe:{NameRecipe[i]}\n Ingredients:\n{Ingredient[i]} \nNumber of Steps:{NumberOfSteps[i]} \nDiscription :{DescriptionIngredients[i]}";
-
-
-//                DisplayRecipe();
-//            }
-
-//        }
-
-//           
-//            public void DisplayRecipe()
-//            {
-//                for (int i = 0; i < NameRecipe.Length; i++) {
-
-//                Console.WriteLine($"Recipies: {i+1}\n" +
-//                    $"Recipe name: {NameRecipe[i]}\n"+
-//                    $"Ingredients: {NameIngredients[i]}\n" +
-//                    $"Quantity: {QuantityIngredients[i]}\n"+
-//                    $"Unit Of Measurement: {UnitOfMeasurement[i]}"+
-//                    $"Number Of Steps: {NumberOfSteps[i]}"+
-//                    $"Recipe Description: {DescriptionIngredients[i]}"
-//                    );
-//            }
-
-//            }
-//        }
-
 
 //}
 //        //private background method to catch if a user inputs word(chars) instead of ints
